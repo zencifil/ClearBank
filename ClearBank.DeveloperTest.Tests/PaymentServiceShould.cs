@@ -1,6 +1,8 @@
 ﻿using ClearBank.DeveloperTest.Data;
 using ClearBank.DeveloperTest.Services;
 using ClearBank.DeveloperTest.Types;
+using FluentValidation;
+using FluentValidation.Results;
 using Moq;
 using NUnit.Framework;
 
@@ -10,6 +12,7 @@ namespace ClearBank.DeveloperTest.Tests
     public class PaymentServiceShould
     {
         private PaymentService _paymentService;
+        private Mock<IValidator> _validator;
         private Mock<IAccountDataStore> _accountDataStore;
         private Mock<IBalanceService> _balanceService;
         private MakePaymentRequest _request;
@@ -17,12 +20,15 @@ namespace ClearBank.DeveloperTest.Tests
         [SetUp]
         public void SetUp()
         {
+            _validator = new Mock<IValidator>();
+            ValidationResult validationResult = null;
+            _validator.Setup(v => v.Validate(It.IsAny<object>())).Returns(validationResult);
             _accountDataStore = new Mock<IAccountDataStore>();
             _balanceService = new Mock<IBalanceService>();
             _balanceService.Setup(bs => bs.DeductBalance(It.IsAny<Account>(), It.IsAny<decimal>()));
             _request = new MakePaymentRequest();
 
-            _paymentService = new PaymentService(_accountDataStore.Object, _balanceService.Object);
+            _paymentService = new PaymentService(_validator.Object, _accountDataStore.Object, _balanceService.Object);
         }
 
         [Test]

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ClearBank.DeveloperTest.Data;
-using ClearBank.DeveloperTest.Services.PaymentSchemes;
+using ClearBank.DeveloperTest.Services.PaymentProcessors;
 using ClearBank.DeveloperTest.Types;
 using FluentValidation;
 
@@ -12,7 +12,7 @@ namespace ClearBank.DeveloperTest.Services
         private readonly IValidator _validator;
         private readonly IAccountDataStore _accountDataStore;
         private readonly IBalanceService _balanceService;
-        private readonly List<IPaymentScheme> _paymentSchemes;
+        private readonly List<IPaymentProcessor> _paymentSchemes;
 
         public PaymentService(IValidator validator,
             IAccountDataStore accountDataStore,
@@ -22,11 +22,11 @@ namespace ClearBank.DeveloperTest.Services
             _accountDataStore = accountDataStore;
             _balanceService = balanceService;
 
-            _paymentSchemes = new List<IPaymentScheme>
+            _paymentSchemes = new List<IPaymentProcessor>
             {
-                new BacsPayment(),
-                new ChapsPayment(),
-                new FasterPayment()
+                new BacsPaymentProcessor(),
+                new ChapsPaymentProcessor(),
+                new FasterPaymentProcessor()
             };
         }
 
@@ -45,7 +45,7 @@ namespace ClearBank.DeveloperTest.Services
             return result;
         }
 
-        private IPaymentScheme GetPaymentScheme(MakePaymentRequest request)
+        private IPaymentProcessor GetPaymentScheme(MakePaymentRequest request)
         {
             return _paymentSchemes.Single(scheme => scheme.IsMatch(request.PaymentScheme));
         }

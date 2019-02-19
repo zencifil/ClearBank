@@ -1,4 +1,4 @@
-﻿using ClearBank.DeveloperTest.Services.PaymentSchemes;
+﻿using ClearBank.DeveloperTest.Services.PaymentProcessors;
 using ClearBank.DeveloperTest.Types;
 using Moq;
 using NUnit.Framework;
@@ -8,13 +8,13 @@ namespace ClearBank.DeveloperTest.Tests
     [TestFixture]
     public class BacsPaymentShould
     {
-        private BacsPayment _bacsPayment;
+        private BacsPaymentProcessor _bacsPayment;
         private Account _account;
 
         [SetUp]
         public void SetUp()
         {
-            _bacsPayment = new BacsPayment();
+            _bacsPayment = new BacsPaymentProcessor();
             _account = new Account();
         }
 
