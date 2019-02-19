@@ -9,11 +9,14 @@ namespace ClearBank.DeveloperTest.Services
     public class PaymentService : IPaymentService
     {
         private readonly IAccountDataStore _accountDataStore;
+        private readonly IBalanceService _balanceService;
         private readonly List<IPaymentScheme> _paymentSchemes;
 
-        public PaymentService(IAccountDataStore accountDataStore)
+        public PaymentService(IAccountDataStore accountDataStore,
+            IBalanceService balanceService)
         {
             _accountDataStore = accountDataStore;
+            _balanceService = balanceService;
 
             _paymentSchemes = new List<IPaymentScheme>
             {
@@ -29,10 +32,7 @@ namespace ClearBank.DeveloperTest.Services
             var result = GetPaymentScheme(request).Process(account, request.Amount);
 
             if (result.Success)
-            {
-                account.Balance -= request.Amount;
-                _accountDataStore.UpdateAccount(account);
-            }
+                _balanceService.DeductBalance(account, request.Amount);
 
             return result;
         }
