@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="BacsPaymentShould.cs" />
     <Compile Include="ChapsPaymentShould.cs" />
+    <Compile Include="FasterPaymentShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
