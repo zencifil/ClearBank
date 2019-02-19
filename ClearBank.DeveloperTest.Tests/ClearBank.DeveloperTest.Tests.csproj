@@ -61,8 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BacsPaymentShould.cs" />
+    <Compile Include="BalanceServiceShould.cs" />
     <Compile Include="ChapsPaymentShould.cs" />
     <Compile Include="FasterPaymentShould.cs" />
+    <Compile Include="PaymentServiceShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
