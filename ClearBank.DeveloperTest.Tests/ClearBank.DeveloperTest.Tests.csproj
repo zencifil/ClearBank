@@ -70,12 +70,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BacsPaymentShould.cs" />
-    <Compile Include="BalanceServiceShould.cs" />
-    <Compile Include="ChapsPaymentShould.cs" />
-    <Compile Include="FasterPaymentShould.cs" />
-    <Compile Include="PaymentServiceShould.cs" />
+    <Compile Include="PaymentProcessors\BacsPaymentShould.cs" />
+    <Compile Include="Services\BalanceServiceShould.cs" />
+    <Compile Include="PaymentProcessors\ChapsPaymentShould.cs" />
+    <Compile Include="PaymentProcessors\FasterPaymentShould.cs" />
+    <Compile Include="Services\PaymentServiceShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\MakePaymentRequestValidatorShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

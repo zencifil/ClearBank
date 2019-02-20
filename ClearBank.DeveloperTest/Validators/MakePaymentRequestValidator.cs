@@ -7,10 +7,9 @@ namespace ClearBank.DeveloperTest.Validators
     {
         public MakePaymentRequestValidator()
         {
-            RuleFor(r => r).NotNull();
-            RuleFor(r => r.DebtorAccountNumber).NotEmpty();
-            RuleFor(r => r.CreditorAccountNumber).NotEmpty();
-            RuleFor(r => r.Amount).GreaterThan(0M);
+            RuleFor(r => r.DebtorAccountNumber).NotEmpty().WithMessage("Debtor account number cannot be empty");
+            RuleFor(r => r.CreditorAccountNumber).NotEmpty().WithMessage("Creditor account number cannot be empty");
+            RuleFor(r => r.Amount).GreaterThan(0M).WithMessage("Amount cannot be less than or equal to zero.");
         }
     }
 }

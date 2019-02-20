@@ -26,15 +26,26 @@ namespace ClearBank.DeveloperTest.Tests
             _balanceService = new Mock<IBalanceService>();
             _balanceService.Setup(bs => bs.DeductBalance(It.IsAny<Account>(), It.IsAny<decimal>()));
             _request = new MakePaymentRequest();
+            _request.PaymentScheme = PaymentScheme.Bacs;
+            _request.Amount = 10M;
 
             _paymentService = new PaymentService(_validator.Object, _accountDataStore.Object, _balanceService.Object);
         }
 
         [Test]
+        public void ReturnUnsuccessfulResult_WhenMakePaymentIsCalled_WithInvalidRequest()
+        {
+            _validator.Setup(v => v.Validate(It.IsAny<object>())).Returns(new ValidationResult(new[] { new ValidationFailure("Amount", "Amount cannot be less than or equal to zero.") }));
+
+            var result = _paymentService.MakePayment(_request);
+
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.Success);
+        }
+
+        [Test]
         public void ReturnSuccessfulResult_WhenPaymentIsMade()
         {
-            _request.PaymentScheme = PaymentScheme.Bacs;
-            _request.Amount = 10M;
             var account = new Account { Balance = 100M, AllowedPaymentSchemes = AllowedPaymentSchemes.Bacs };
             _accountDataStore.Setup(ads => ads.GetAccount(It.IsAny<string>())).Returns(account);
 
@@ -47,8 +58,6 @@ namespace ClearBank.DeveloperTest.Tests
         [Test]
         public void ReturnUnsuccessfulResult_WhenPaymentFails()
         {
-            _request.PaymentScheme = PaymentScheme.Bacs;
-            _request.Amount = 10M;
             var account = new Account { Balance = 100M, AllowedPaymentSchemes = AllowedPaymentSchemes.Chaps };
             _accountDataStore.Setup(ads => ads.GetAccount(It.IsAny<string>())).Returns(account);
 
