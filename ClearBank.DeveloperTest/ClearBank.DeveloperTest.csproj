@@ -58,10 +58,10 @@
     <Compile Include="Services\BalanceService.cs" />
     <Compile Include="Services\IBalanceService.cs" />
     <Compile Include="Services\IPaymentService.cs" />
-    <Compile Include="Services\PaymentProcessors\BacsPaymentProcessor.cs" />
-    <Compile Include="Services\PaymentProcessors\ChapsPaymentProcessor.cs" />
-    <Compile Include="Services\PaymentProcessors\FasterPaymentProcessor.cs" />
-    <Compile Include="Services\PaymentProcessors\IPaymentProcessor.cs" />
+    <Compile Include="PaymentProcessors\BacsPaymentProcessor.cs" />
+    <Compile Include="PaymentProcessors\ChapsPaymentProcessor.cs" />
+    <Compile Include="PaymentProcessors\FasterPaymentProcessor.cs" />
+    <Compile Include="PaymentProcessors\IPaymentProcessor.cs" />
     <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Types\Account.cs" />
     <Compile Include="Types\AccountStatus.cs" />

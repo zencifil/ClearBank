@@ -1,6 +1,6 @@
 ﻿using ClearBank.DeveloperTest.Types;
 
-namespace ClearBank.DeveloperTest.Services.PaymentProcessors
+namespace ClearBank.DeveloperTest.PaymentProcessors
 {
     public interface IPaymentProcessor
     {

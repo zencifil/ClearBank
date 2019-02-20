@@ -1,17 +1,17 @@
 ﻿using ClearBank.DeveloperTest.Types;
 
-namespace ClearBank.DeveloperTest.Services.PaymentProcessors
+namespace ClearBank.DeveloperTest.PaymentProcessors
 {
-    public class BacsPaymentProcessor : IPaymentProcessor
+    public class FasterPaymentProcessor : IPaymentProcessor
     {
         public bool IsMatch(PaymentScheme paymentScheme)
         {
-            return paymentScheme == PaymentScheme.Bacs;
+            return paymentScheme == PaymentScheme.FasterPayments;
         }
 
         public MakePaymentResult Process(Account account, decimal amount)
         {
-            if (account == null || !account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.Bacs))
+            if (account == null || !account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.FasterPayments) || account.Balance < amount)
                 return new MakePaymentResult { Success = false };
 
             return new MakePaymentResult { Success = true };

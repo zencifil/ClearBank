@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ClearBank.DeveloperTest.Data;
-using ClearBank.DeveloperTest.Services.PaymentProcessors;
+using ClearBank.DeveloperTest.PaymentProcessors;
 using ClearBank.DeveloperTest.Types;
 using FluentValidation;
 

@@ -1,4 +1,4 @@
-﻿using ClearBank.DeveloperTest.Services.PaymentProcessors;
+﻿using ClearBank.DeveloperTest.PaymentProcessors;
 using ClearBank.DeveloperTest.Types;
 using Moq;
 using NUnit.Framework;

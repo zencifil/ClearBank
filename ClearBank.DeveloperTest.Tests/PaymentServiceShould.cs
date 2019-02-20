@@ -21,8 +21,7 @@ namespace ClearBank.DeveloperTest.Tests
         public void SetUp()
         {
             _validator = new Mock<IValidator>();
-            ValidationResult validationResult = null;
-            _validator.Setup(v => v.Validate(It.IsAny<object>())).Returns(validationResult);
+            _validator.Setup(v => v.Validate(It.IsAny<object>())).Returns(new ValidationResult());
             _accountDataStore = new Mock<IAccountDataStore>();
             _balanceService = new Mock<IBalanceService>();
             _balanceService.Setup(bs => bs.DeductBalance(It.IsAny<Account>(), It.IsAny<decimal>()));
