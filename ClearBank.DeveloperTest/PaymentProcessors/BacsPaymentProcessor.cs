@@ -1,8 +1,8 @@
 ﻿using ClearBank.DeveloperTest.Types;
 
-namespace ClearBank.DeveloperTest.Services.PaymentSchemes
+namespace ClearBank.DeveloperTest.PaymentProcessors
 {
-    public class BacsPayment : IPaymentScheme
+    public class BacsPaymentProcessor : IPaymentProcessor
     {
         public bool IsMatch(PaymentScheme paymentScheme)
         {

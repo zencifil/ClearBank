@@ -1,4 +1,4 @@
-﻿using ClearBank.DeveloperTest.Services.PaymentSchemes;
+﻿using ClearBank.DeveloperTest.PaymentProcessors;
 using ClearBank.DeveloperTest.Types;
 using Moq;
 using NUnit.Framework;
@@ -8,13 +8,13 @@ namespace ClearBank.DeveloperTest.Tests
     [TestFixture]
     public class FasterPaymentShould
     {
-        private FasterPayment _fasterPayment;
+        private FasterPaymentProcessor _fasterPayment;
         private Account _account;
 
         [SetUp]
         public void SetUp()
         {
-            _fasterPayment = new FasterPayment();
+            _fasterPayment = new FasterPaymentProcessor();
             _account = new Account();
         }
 

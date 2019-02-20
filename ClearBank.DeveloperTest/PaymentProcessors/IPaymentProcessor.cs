@@ -1,8 +1,8 @@
 ﻿using ClearBank.DeveloperTest.Types;
 
-namespace ClearBank.DeveloperTest.Services.PaymentSchemes
+namespace ClearBank.DeveloperTest.PaymentProcessors
 {
-    public interface IPaymentScheme
+    public interface IPaymentProcessor
     {
         bool IsMatch(PaymentScheme paymentScheme);
         MakePaymentResult Process(Account account, decimal amount);
